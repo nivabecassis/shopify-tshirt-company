@@ -1,0 +1,32 @@
+[
+  {
+    "sku": "TSH-BLU-S",
+    "size": "small",
+    "color": "blue"
+  },
+  {
+    "sku": "TSH-BLU-M",
+    "size": "medium",
+    "color": "blue"
+  },
+  {
+    "sku": "TSH-BLU-L",
+    "size": "large",
+    "color": "blue"
+  },
+  {
+    "sku": "TSH-RED-S",
+    "size": "small",
+    "color": "red"
+  },
+  {
+    "sku": "TSH-RED-M",
+    "size": "medium",
+    "color": "red"
+  },
+  {
+    "sku": "TSH-RED-L",
+    "size": "large",
+    "color": "red"
+  }
+]

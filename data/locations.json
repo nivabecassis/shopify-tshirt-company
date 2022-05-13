@@ -1,0 +1,33 @@
+[
+  {
+    "address": "123 foo road",
+    "city": "montreal",
+    "state": "quebec",
+    "country": "canada",
+    "country_code": "CA",
+    "phone": "5141231234",
+    "items": [
+      { "sku": "TSH-BLU-S", "quantity": 100 },
+      { "sku": "TSH-BLU-M", "quantity": 40 },
+      { "sku": "TSH-BLU-L", "quantity": 52 },
+      { "sku": "TSH-RED-S", "quantity": 73 },
+      { "sku": "TSH-RED-M", "quantity": 110 },
+      { "sku": "TSH-RED-L", "quantity": 23 }
+    ]
+  },
+  {
+    "address": "987 bar st",
+    "city": "toronto",
+    "state": "ontario",
+    "country": "canada",
+    "country_code": "CA",
+    "items": [
+      { "sku": "TSH-BLU-S", "quantity": 230 },
+      { "sku": "TSH-BLU-M", "quantity": 400 },
+      { "sku": "TSH-BLU-L", "quantity": 200 },
+      { "sku": "TSH-RED-S", "quantity": 90 },
+      { "sku": "TSH-RED-M", "quantity": 150 },
+      { "sku": "TSH-RED-L", "quantity": 210 }
+    ]
+  }
+]
