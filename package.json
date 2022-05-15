@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./app"
+    "start": "npx ts-node ./src/app.ts",
+    "data:create": "npx ts-node ./seeder.ts -c",
+    "data:delete": "npx ts-node ./seeder.ts -d"
   },
   "dependencies": {
     "colors": "^1.4.0",

@@ -26,3 +26,5 @@ const LocationSchema: Schema = new Schema({
 });
 
 const Location: Model<Location> = model("Location", LocationSchema);
+
+export default Location;

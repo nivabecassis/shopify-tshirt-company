@@ -6,14 +6,14 @@
     "country": "canada",
     "country_code": "CA",
     "phone": "5141231234",
-    "items": [
-      { "sku": "TSH-BLU-S", "quantity": 100 },
-      { "sku": "TSH-BLU-M", "quantity": 40 },
-      { "sku": "TSH-BLU-L", "quantity": 52 },
-      { "sku": "TSH-RED-S", "quantity": 73 },
-      { "sku": "TSH-RED-M", "quantity": 110 },
-      { "sku": "TSH-RED-L", "quantity": 23 }
-    ]
+    "items": {
+      "TSH-BLU-S": 100,
+      "TSH-BLU-M": 70,
+      "TSH-BLU-L": 120,
+      "TSH-RED-S": 150,
+      "TSH-RED-M": 90,
+      "TSH-RED-L": 104
+    }
   },
   {
     "address": "987 bar st",
@@ -21,13 +21,14 @@
     "state": "ontario",
     "country": "canada",
     "country_code": "CA",
-    "items": [
-      { "sku": "TSH-BLU-S", "quantity": 230 },
-      { "sku": "TSH-BLU-M", "quantity": 400 },
-      { "sku": "TSH-BLU-L", "quantity": 200 },
-      { "sku": "TSH-RED-S", "quantity": 90 },
-      { "sku": "TSH-RED-M", "quantity": 150 },
-      { "sku": "TSH-RED-L", "quantity": 210 }
-    ]
+    "phone": "5149991234",
+    "items": {
+      "TSH-BLU-S": 200,
+      "TSH-BLU-M": 20,
+      "TSH-BLU-L": 220,
+      "TSH-RED-S": 250,
+      "TSH-RED-M": 290,
+      "TSH-RED-L": 207
+    }
   }
 ]
