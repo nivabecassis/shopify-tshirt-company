@@ -1,15 +1,19 @@
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-const colors = require("colors");
-const dotenv = require("dotenv");
-const connectDB = require("./config/db");
-const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
+import express from "express";
+import path from "path";
+import cookieParser from "cookie-parser";
+import logger from "morgan";
+import dotenv from "dotenv";
+import "colors";
+
+import connectDB from "./config/db";
+import indexRouter from "./routes/index";
+import usersRouter from "./routes/users";
 
 // Load env configs
-dotenv.config({ path: "./config/config.env" });
+const result = dotenv.config({ path: "./src/config/config.env" });
+if (result.error) {
+  throw new Error(result.error.message);
+}
 
 // Connect to the db
 connectDB();
@@ -44,7 +48,7 @@ const server = app.listen(PORT, () =>
 );
 
 // Handle unhandled promises and crash server
-process.on("unhandledRejection", (err, promise) => {
+process.on("unhandledRejection", (err: Error, promise) => {
   console.log(`Error: ${err.message}`.red);
   server.close((err) => process.exit(1));
 });
