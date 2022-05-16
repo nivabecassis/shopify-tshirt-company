@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 import "colors";
 
 import connectDB from "./config/db";
-import indexRouter from "./routes/index";
+import itemsRouter from "./routes/items";
 import usersRouter from "./routes/users";
 
 // Load env configs
@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === "dev") {
 }
 
 // Routes
-app.use("/", indexRouter);
+app.use("/items", itemsRouter);
 app.use("/users", usersRouter);
 
 // Set express' static folder
