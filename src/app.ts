@@ -8,6 +8,7 @@ import "colors";
 import connectDB from "./config/db";
 import itemsRouter from "./routes/items";
 import locationsRouter from "./routes/locations";
+import inventoryRouter from "./routes/inventory";
 import errorHandler from "./middleware/error";
 
 // Load env configs
@@ -34,6 +35,7 @@ if (process.env.NODE_ENV === "dev") {
 // Routes
 app.use("/items", itemsRouter);
 app.use("/locations", locationsRouter);
+app.use("/inventory", inventoryRouter);
 
 // Set express' static folder
 app.use(express.static(path.join(__dirname, "public")));
