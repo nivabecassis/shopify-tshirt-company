@@ -1,4 +1,5 @@
 import { Types, Schema, Model, model, Document } from "mongoose";
+import Item from "./Item";
 
 // ItemLocation
 export interface IItemLocation {
@@ -31,6 +32,53 @@ const LocationSchema: Schema = new Schema({
   phone: { type: String, required: true },
   items: { type: [ItemLocationSchema], default: [] },
 });
+
+/**
+ * Calculates the sum of the given item's inventory for every location
+ * @param sku to calculate the total
+ */
+ItemLocationSchema.statics.getTotalInventory = async function (sku: string) {
+  const totalInventory = await this.aggregate([
+    {
+      $unwind: {
+        path: "$items",
+      },
+    },
+    {
+      $project: {
+        items: 1,
+        sku: "$items.sku",
+        quantity: "$items.quantity",
+      },
+    },
+    {
+      $group: {
+        _id: "$sku",
+        total: {
+          $sum: "$quantity",
+        },
+      },
+    },
+    {
+      $match: {
+        _id: sku,
+      },
+    },
+  ]);
+
+  try {
+    await Item.findOneAndUpdate({ sku }, { totalInventory });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+ItemLocationSchema.post(
+  "updateOne",
+  async function (itemLocation: IItemLocation) {
+    await this.constructor.getTotalInventory(itemLocation.sku);
+  }
+);
 
 const Location: Model<ILocation> = model("Location", LocationSchema);
 
