@@ -8,6 +8,7 @@ import "colors";
 import connectDB from "./config/db";
 import itemsRouter from "./routes/items";
 import usersRouter from "./routes/users";
+import errorHandler from "./middleware/error";
 
 // Load env configs
 const result = dotenv.config({ path: "./src/config/config.env" });
@@ -37,7 +38,8 @@ app.use("/users", usersRouter);
 // Set express' static folder
 app.use(express.static(path.join(__dirname, "public")));
 
-// TODO add middleware for errors
+// Error handling
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () =>
