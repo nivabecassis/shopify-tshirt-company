@@ -7,7 +7,7 @@ interface IItem extends Document {
 }
 
 const ItemSchema: Schema = new Schema({
-  sku: { type: String, required: true },
+  sku: { type: String, required: true, unique: true },
   size: { type: String, required: true },
   color: { type: String, required: true },
 });

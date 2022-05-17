@@ -4,13 +4,25 @@ import Item from "../models/Item";
 import ApiError from "../types/ApiError";
 
 /**
+ * Creates an item with the necessary information in the request body.
+ * @returns The newly created item
+ */
+export const createItem = asyncHandler(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const { sku, size, color } = req.body;
+    const item = await Item.create({ sku, size, color });
+    return res.json(item).status(200);
+  }
+);
+
+/**
  * Gets all the items in the database.
  * @returns all the items
  */
 export const getItems = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
     const items = await Item.find();
-    res.json(items).status(200);
+    return res.json(items).status(200);
   }
 );
 
@@ -28,7 +40,6 @@ export const deleteItem = asyncHandler(
 
     // TODO Remove stock from locations after deleting this item
     await item.deleteOne();
-    res.json({ success: true }).status(200);
-    return next();
+    return res.json({ success: true }).status(200);
   }
 );

@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import { MongoServerError } from "mongodb";
 import { CastError } from "mongoose";
 import ApiError from "../types/ApiError";
 
@@ -26,6 +27,13 @@ const errorHandler = (
     const castError = err as CastError;
     message = `Invalid value: ${castError.value}`;
     status = 400;
+  }
+
+  if (err.name === "MongoServerError") {
+    const mongoError = err as MongoServerError;
+    if (mongoError.code === 11000) {
+      message = "Violated unique constraint";
+    }
   }
 
   return res.status(status).json({ status, message });
