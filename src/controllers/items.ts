@@ -26,6 +26,22 @@ export const getItems = asyncHandler(
   }
 );
 
+export const updateItem = asyncHandler(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const { id } = req.params;
+    const updatedItem = await Item.findOneAndUpdate(
+      { _id: id },
+      { ...req.body },
+      { new: true }
+    );
+    if (!updatedItem) {
+      throw new ApiError(`Item with ID ${id} could not be found`, 404);
+    }
+
+    return res.json(updatedItem).status(200);
+  }
+);
+
 /**
  * Deletes a single item based on the _id field.
  * @param id Corresponds to the _id of the item to be deleted
