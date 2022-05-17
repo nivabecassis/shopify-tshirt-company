@@ -15,7 +15,7 @@ const errorHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  let status = (err as ApiError).statusCode || 500;
+  let status = err instanceof ApiError ? err.getStatus() : 500;
   let message = err.message || "Server error";
 
   if (process.env.NODE_ENV === "dev") {

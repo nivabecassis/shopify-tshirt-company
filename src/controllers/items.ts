@@ -1,6 +1,7 @@
 import asyncHandler from "../middleware/async";
 import { NextFunction, Request, Response } from "express";
 import Item from "../models/Item";
+import ApiError from "../types/ApiError";
 
 /**
  * Gets all the items in the database.
@@ -22,7 +23,7 @@ export const deleteItem = asyncHandler(
     const { id } = req.params;
     const item = await Item.findById(id);
     if (!item) {
-      throw new Error(`Item with ID ${id} could not be found`);
+      throw new ApiError(`Item with ID ${id} could not be found`, 404);
     }
 
     // TODO Remove stock from locations after deleting this item
