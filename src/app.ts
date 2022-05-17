@@ -7,7 +7,7 @@ import "colors";
 
 import connectDB from "./config/db";
 import itemsRouter from "./routes/items";
-import usersRouter from "./routes/users";
+import locationsRouter from "./routes/locations";
 import errorHandler from "./middleware/error";
 
 // Load env configs
@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === "dev") {
 
 // Routes
 app.use("/items", itemsRouter);
-app.use("/users", usersRouter);
+app.use("/locations", locationsRouter);
 
 // Set express' static folder
 app.use(express.static(path.join(__dirname, "public")));

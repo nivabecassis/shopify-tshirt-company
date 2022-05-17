@@ -1,9 +1,8 @@
 import { Router } from "express";
+import { getLocations } from "../controllers/locations";
 const router: Router = Router();
 
 /* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
-});
+router.get("/", getLocations);
 
 export default router;

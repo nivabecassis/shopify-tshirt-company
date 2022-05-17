@@ -1,18 +1,25 @@
-import { Document, Schema, Model, model } from "mongoose";
+import { Types, Schema, Model, model, Document } from "mongoose";
 
-interface ItemQuantity extends Document {
+// ItemLocation
+export interface IItemLocation {
   sku: string;
   quantity: number;
 }
 
-interface Location {
+const ItemLocationSchema: Schema = new Schema({
+  sku: { type: String, ref: "Item.sku", required: true },
+  quantity: { type: Number, default: 0 },
+});
+
+// Location
+export interface ILocation extends Document {
   address: string;
   city: string;
   state: string;
   country: string;
   country_code: string;
   phone: string;
-  items: Map<string, number>;
+  items: IItemLocation[];
 }
 
 const LocationSchema: Schema = new Schema({
@@ -22,9 +29,9 @@ const LocationSchema: Schema = new Schema({
   country: { type: String, required: true },
   country_code: { type: String, required: true },
   phone: { type: String, required: true },
-  items: { type: Map, of: Number, required: false },
+  items: { type: [ItemLocationSchema], default: [] },
 });
 
-const Location: Model<Location> = model("Location", LocationSchema);
+const Location: Model<ILocation> = model("Location", LocationSchema);
 
 export default Location;

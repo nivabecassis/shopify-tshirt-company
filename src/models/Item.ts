@@ -1,6 +1,7 @@
-import { model, Schema, Model, Document } from "mongoose";
+import { model, Schema, Model, Document, Types } from "mongoose";
+import { ILocation } from "./Location";
 
-interface IItem extends Document {
+export interface IItem extends Document {
   sku: string;
   size: string;
   color: string;
@@ -15,10 +16,7 @@ const ItemSchema: Schema = new Schema({
 // TODO after updating the sku, change values in locations
 // TODO after updating the color, verify if sku was changed (otherwise change the sku auto)
 // TODO before transferring stock, verify if there is enough in origin location
-
-ItemSchema.pre(["updateOne", "findOneAndUpdate"], async (next) => {
-  if ()
-})
+// TODO calculate total stock based on all the locations
 
 const Item: Model<IItem> = model("Item", ItemSchema);
 
