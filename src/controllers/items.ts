@@ -48,7 +48,6 @@ export const updateItem = asyncHandler(
  */
 export const deleteItem = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    // TODO Remove stock from locations after deleting this item
     const { id } = req.params;
     const item = await Item.findByIdAndDelete(id);
     if (!item) {
