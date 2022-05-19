@@ -29,7 +29,7 @@ To run the app, do the following tasks:
 2. Run the seeder script 
    1. `npm run data:delete` to clear the data in the database
    2. `npm run data:create` to create the data in the database
-3. Verify that the test credentials are in the `config.env` file (MONGO_URI)
+3. Verify that the test credentials are in the `config.env` file (MONGO_URI) or in the hosting environment's secret keys (already done on Replit)
 4. Run the app `npm run start`
 
 
